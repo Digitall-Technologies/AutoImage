@@ -11,7 +11,12 @@ const port = process.env.PORT || 3001;
 // then it will begin the cron job to generate a caption and post an image
 //when it runs out of images it will stop trying to post
 
-let topics = []; //fill this with topics you want for the caption to be generated
+let topics = [
+  "A happy day in the fall, with leaves everywhere",
+  "happy spring day and everyone is happy",
+  "happy winter day and everyone is happy",
+]; //fill this with topics you want for the caption to be generated
+
 let imagePaths = []; //fill this with image paths from the image folder
 let locations = await uploadImages(imagePaths);
 let index = 0;
@@ -19,6 +24,7 @@ let max = locations.length;
 
 const run = async () => {
   if (index == max) {
+    console.log("we are out of photos");
     return;
   }
   let topic = topics[Math.floor(Math.random() * topics.length)];
@@ -27,14 +33,17 @@ const run = async () => {
   let image = locations[index];
 
   await postImage(image, caption);
+  index = index + 1;
 };
 
-cron.schedule("0 */8 * * *", function () {
-  console.log("---------------------");
-  console.log("running a task every 8 hours");
-  run();
-});
+run();
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+// cron.schedule("0 */8 * * *", function () {
+//   console.log("---------------------");
+//   console.log("running a task every 8 hours");
+//   run();
+// });
+
+// app.listen(port, () => {
+//   console.log(`listening on port ${port}`);
+// });

@@ -11,7 +11,7 @@ exports.generateCaption = async (topic) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Write a creative caption for the topic for a instagram aimed at people who love spirituality:\n\nTopic: ${topic} \n\nIt is not related to advertising in anyway`,
+      prompt: `Write a creative caption for the topic for a instagram aimed at people using the following topic:\n\nTopic: ${topic} \n\nIt is not related to advertising in anyway`,
       temperature: 0.9,
       max_tokens: 200,
       top_p: 1.0,
