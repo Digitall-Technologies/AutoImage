@@ -32,6 +32,6 @@ exports.generateCaption = async (topic) => {
     const caption = response.data.choices[0].text;
     return caption;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };

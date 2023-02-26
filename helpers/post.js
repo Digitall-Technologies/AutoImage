@@ -1,13 +1,10 @@
 const { IgApiClient } = require("instagram-private-api");
 const fs = require("fs");
 require("dotenv").config();
-
+const Jimp = require("jimp");
 const ig = new IgApiClient();
 
 exports.postImage = async (imagePath, caption) => {
-  console.log("-------------------------------");
-  console.log("---- FETCHING POST CONTENT ----");
-  console.log("-------------------------------");
   try {
     const image = await Jimp.read(imagePath);
     const buff = await image.getBufferAsync("image/jpeg");

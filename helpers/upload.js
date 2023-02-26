@@ -13,4 +13,5 @@ exports.uploadImages = async (imagePaths) => {
       return location;
     })
   );
+  return imageLocations;
 };
