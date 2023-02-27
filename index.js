@@ -23,7 +23,7 @@ const run = async () => {
   let topic = topics[Math.floor(Math.random() * topics.length)];
 
   let caption = await generateCaption(topic);
-  console.log("caption_______");
+  console.log("Caption_______");
   console.log(caption);
 
   let image = locations[index];
@@ -36,9 +36,9 @@ const run = async () => {
   console.log(index);
 };
 
-cron.schedule("* * * * *", function () {
+cron.schedule("0 0 * * *", function () {
   console.log("---------------------");
-  console.log("running a task every minute");
+  console.log("running a task once a day");
   run();
 });
 
